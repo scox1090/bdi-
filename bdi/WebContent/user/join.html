@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+
+<body>
+	<form>
+		<table border="1">
+			<tr>
+				<th><label for="name">이름</label></th>
+				<td><input type="text" id="name"></td>
+			</tr>
+
+			<tr>
+				<th><label for="birth">생년월일</label></th>
+				<td><input type="text" id="birth"></td>
+			</tr>
+
+			<tr>
+				<th><label for="email">E-mail</label></th>
+				<td><input type="text" id="email"></td>
+			</tr>
+
+			<tr>
+				<th><label for="id">ID</label></th>
+				<!-- id="이곳에는 중복되지 않은 이름을 넣어야 한다." -->
+				<td><input type="text" id="id"></td>
+			</tr>
+
+			<tr>
+				<th><label for="pwd">Password</label></th>
+				<!-- 비밀번호는 무조건 영문으로만 표기된다. -->
+				<td><input type="password" id="pwd"></td>
+			</tr>
+
+			<tr>
+				<th><label for="trans">성별</label></th>
+				<td><select id="trans">
+						<option value="1">남</option>
+						<option value="1">여</option>
+				</select></td>
+			</tr>
+
+			<tr>
+				<td colspan="2" style="text-align: center" onclick="alert(1)"><button
+						type="button">회원가입</button></td>
+			</tr>
+		</table>
+	</form>
+	<script>
+	test();		/* 파라메터 안에 무엇이 오든 함수명만 맞으면 명령을 불러올 수 있다.(호출을 먼저해도 선언만 되어있으면 호출할 수 있다.) */
+	funtion test(a){
+		alert("난 테스트 함수1!");
+	}
+	funtion test(a){
+		alert("난 테스트 함수2!");
+	}
+	test();
+	test = 1;
+	test();
+	</script>
+</body>
+</html>
