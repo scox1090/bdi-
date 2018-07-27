@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+	var arr = new Array();
+	arr.push("1");			// push는 배열을 추가하는 방법
+	arr.push("2");
+/* 	alert(arr[0]); */
+	
+	arr = ["1", "2", "3"];
+	arr.shift(); 	//왼쪽으로 한칸씩 민다.(마지막 배열은 지워진다.)
+	arr.unshift('1'); 		//첫번째 배열에 '1'을 끼워 넣는다.
+	arr.pop();		//오른쪽으로 한칸씩 민다.(마지막 배열은 지워진다.)
+	arr.push('3');		//마지막 배열에 '3'을 끼워 넣는다.
+	arr.splice(1,1);	//splice(배열위치,지울개수)중간부터 워하는 개수만큼 배열을 삭제할 수 있다.
+	for(var i=0;i<arr.length;i++){
+		document.write(arr[i]+ '<br>');		//chrome에 프린트한다.	
+	}
+</script>
+</body>
+</html>

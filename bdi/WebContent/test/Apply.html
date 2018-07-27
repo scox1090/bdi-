@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+	var userArr = new Array();
+	
+	var user1 = new Map();
+	user1.set('이름', '홍길동');
+	user1.set('나이',33);
+	
+	userArr.push(user1);
+	
+	var user2 = new Map();
+	user2.set('이름', '오길동');
+	user2.set('나이',23);
+	
+	userArr.push(user2);
+	
+	
+	var user3 = new Map();
+	user3.set('이름', '이길동');
+	user3.set('나이',19);
+	
+	userArr.push(user3);
+	
+	var user4 = new Map();
+	user4.set('이름', '고길동');
+	user4.set('나이',43);
+	
+	userArr.push(user4);
+	
+	var user5 = new Map();
+	user5.set('이름', '구길동');
+	user5.set('나이',53);
+	
+	userArr.push(user5);
+	
+	for(var i=0;i<userArr.length;i++){
+		alert(userArr[i].get('이름') + ',' + userArr[i].get("나이"));
+	}
+</script>
+</body>
+</html>

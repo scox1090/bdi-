@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="rDiv"></div>
+<script>
+	var rDiv = document.querySelector('#rDiv');
+	var str = '<table border="1">';
+	for(var i=0;i<3;i++){
+		str += '<tr>';
+		for(var j=1;j<=3;j++){
+			str += '<td>' + (i*3+j) + '</td>';
+		}
+		str += '</tr>';
+	}
+	str += '</table>';
+	rDiv.innerHTML = str;
+</script>
+</body>
+</html>
