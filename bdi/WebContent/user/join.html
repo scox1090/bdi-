@@ -2,116 +2,49 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>Insert title here</title>
 </head>
-
 <body>
-	<form>
+
+	<form action="/user/join.jsp">
 		<table border="1">
 			<tr>
-				<th><label for="name">이름</label></th>
-				<td><input type="text" id="name"></td>
+				<th colspan="2">= 회원가입 =</th>
 			</tr>
-
 			<tr>
-				<th><label for="birth">생년월일</label></th>
-				<td><input type="text" id="birth"></td>
+				<th><label for="id">ID : </label></th>
+				<td><input type="text" name="id" id="id"></td>
 			</tr>
-
 			<tr>
-				<th><label for="email">E-mail</label></th>
-				<td><input type="text" id="email"></td>
+				<th><label for="age">나이 : </label></th>
+				<td><input type="number" min="0" max="140" name="age" id="age"></td>
 			</tr>
-
 			<tr>
-				<th><label for="id">ID</label></th>
-				<!-- id="이곳에는 중복되지 않은 이름을 넣어야 한다." -->
-				<td><input type="text" id="id"></td>
+				<th><label for="email">Email : </label></th>
+				<td><input type="email" name="email" id="email"></td>
 			</tr>
-
 			<tr>
-				<th><label for="pwd">Password</label></th>
-				<!-- 비밀번호는 무조건 영문으로만 표기된다. -->
-				<td><input type="password" id="pwd"></td>
+				<th><label for="pwd">Password : </label></th>
+				<td><input type="password" name="pwd" id="pwd"></td>
 			</tr>
-
 			<tr>
-				<th><label for="trans">성별</label></th>
-				<td><select id="trans">
-						<option value="선택">선택</option>
-						<option value="남">남</option>
-						<option value="여">여</option>
-				</select></td>
+				<th>취미</th>
+				<td>
+				<label for="ho1">영화감상</label>
+				<input type="checkbox" id="ho1" name="hobby" value="영화감상"> 
+				<label for="ho2">음악감상</label> 
+				<input type="checkbox" id="ho2" name="hobby" value="음악감상"> 
+				<label for="ho3">개발</label>
+				<input type="checkbox" id="ho3" name="hobby" value="개발"> 
+				<label for="ho4">게임</label>
+				<input type="checkbox" id="ho4" name="hobby" value="게임">
+				</td>
 			</tr>
-
 			<tr>
-				<td colspan="2" style="text-align: center" onclick="checkValue()"><button
-						type="button">회원가입</button></td>
+				<td colspan="2" style="text-align:center">
+					<button>회원가입</button></td>
 			</tr>
 		</table>
 	</form>
-	<script>
-	function checkValue(){
-		var nameObj = document.getElementById("name");
-		if(nameObj.value.trim().length<2){
-			alert("이름은 두글자 이상입니다.");
-			nameObj.value ="";
-			nameObj.focus();
-			return false;
-		}
-		
-		var birthObj = document.getElementById("birth");
-		if(birthObj.value.trim().length!=8){
-			alert("20100207의 양식으로 입력해 주세요.");
-			birthObj.value ="";
-			birthObj.focus();
-			return false;
-		}
-		
-		var emailObj = document.getElementById("email");
-		if(emailObj.value.trim().length<10){
-			alert("올바른 이메일 양식이 아닙니다.(10글자이상)");
-			emailObj.value ="";
-			emailObj.focus();
-			return false;
-		}
-		
-		var idObj = document.getElementById("id");
-		if(idObj.value.trim().length<5){
-			alert("아이디은 5글자 이상입니다.");
-			idObj.value ="";
-			idObj.focus();
-			return false;
-		}
-		
-		var pwdObj = document.getElementById("pwd");
-		if(pwdObj.value.trim().length<12){
-			alert("비밀번호는 12글자 이상입니다.");
-			pwdObj.value ="";
-			pwdObj.focus();
-			return false;
-		}
-		
-		var transObj = document.getElementById("trans");
-		if(transObj.value=="선택"){
-			alert("성별을 선택하여 주십시오.");
-			transObj.value ="";
-			transObj.focus();
-			return false;
-		}
-	}
-	/* 
-	test();		파라메터 안에 무엇이 오든 함수명만 맞으면 명령을 불러올 수 있다.(호출을 먼저해도 선언만 되어있으면 호출할 수 있다.)
-	funtion test(a){
-		alert("난 테스트 함수1!");
-	}
-	funtion test(a){
-		alert("난 테스트 함수2!");
-	}
-	test();
-	test = 1;
-	test();
-	 */
-	</script>
 </body>
 </html>
