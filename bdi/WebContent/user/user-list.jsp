@@ -1,26 +1,17 @@
-<%@page import="com.bdi.test.UserService"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.Map"%>
-<%@page import="java.util.List"%>
+<%@page import="com.bdi.test.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%!
-	public String checkSel(String str1,String str2){
-		if(str1==null){
-			return "";
-		}
-		if(!str1.equals(str2)){
-			return "";
-		}
-		return "selected";
-	}
-%>
+   
 <%
-String search = request.getParameter("search");
-String type = request.getParameter("type");
-UserService us = UserService.getUS();
-List<Map<String,String>> userList = us.getUserList(type, search);
+String uiId = request.getParameter("uiId");
+String[] types = request.getParameterValues("type");
+String typeStr = "";
+if(types!=null){
+	for(String str:types){
+		typeStr += "," + str;
+	}
+	typeStr = typeStr.substring(1);
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -29,52 +20,51 @@ List<Map<String,String>> userList = us.getUserList(type, search);
 <title>Insert title here</title>
 <link rel="stylesheet" href="/bs-3.3.7/dist/css/bootstrap.css"/>
 <link rel="stylesheet" href="/bs-3.3.7/dist/css/bootstrap-theme.css"/>
-<style>
-	table td, th{
-		text-align:center;
-	}
-</style>
 </head>
 <body>
-
 <div class="container">
-	<div style="height:60px;padding:10px">
+	<div style="margin:10px">
 		<form>
-			<select name="type">
-				<option value="name" <%=checkSel(type,"name")%>>이름</option>
-				<option value="age" <%=checkSel(type,"age")%>>나이</option>
-				<option value="address" <%=checkSel(type,"address")%>>주소</option>
-				<option value="id" <%=checkSel(type,"id")%>>아이디</option>
-			</select> : <input type="text" name="search"
-			value="<%=search!=null?search:""%>">
+			<input type="checkbox" value="uiId" name="type" id="id">
+			<label for="id">아이디</label>
+			<input type="checkbox" value="uiName" name="type" id="name">
+			<label for="name">이름</label>
+			<input type="checkbox" value="uiEtc" name="type" id="etc">
+			<label for="etc">비고</label>
+			: <input type="text" name="uiId" value="<%=uiId!=null?uiId:""%>">
 			<button>검색</button>
 		</form>
 	</div>
 	<table class="table table-hover table-bordered">
 		<thead>
 			<tr>
+				<th>번호</th>
+				<th>아이디</th>
+				<th>비밀번호</th>
 				<th>이름</th>
 				<th>나이</th>
-				<th>주소</th>
-				<th>아이디</th>
+				<th>부서코드</th>
+				<th>비고란</th>
 			</tr>
 		</thead>
 		<tbody>
 <%
-for(int i=0;i<userList.size();i++){
-	Map<String,String> user = userList.get(i);
-%>
-			<tr>
-				<td><%=user.get("name")%></td>
-				<td><%=user.get("age")%></td>
-				<td><%=user.get("address")%></td>
-				<td><%=user.get("id")%></td>
-			</tr>
-<%
-}
+UserDAO udao = new UserDAO();
+StringBuilder sb = udao.getTableString(types,uiId);
+out.println(sb.toString());
 %>
 		</tbody>
 	</table>
 </div>
+
+<script>
+	var types = '<%=typeStr%>'.split(',');
+	
+	if(types!='null'){
+		for(var type of types){
+			document.querySelector('input[value=' + type + ']').checked = true;
+		}
+	}
+</script>
 </body>
 </html>
